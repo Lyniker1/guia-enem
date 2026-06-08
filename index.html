@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia do Zero pro ENEM</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #1a4a1a;
+    --verde-medio: #2d6a2d;
+    --verde-claro: #4a9e4a;
+    --verde-bg: #f0f7f0;
+    --verde-suave: #e0efe0;
+    --amarelo: #f5c842;
+    --amarelo-escuro: #d4a800;
+    --preto: #0d0d0d;
+    --cinza-escuro: #1a1a1a;
+    --cinza: #444;
+    --cinza-medio: #777;
+    --cinza-claro: #f5f5f2;
+    --branco: #ffffff;
+    --fonte-titulo: 'Syne', sans-serif;
+    --fonte-corpo: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--fonte-corpo);
+    color: var(--preto);
+    background: var(--branco);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    background: var(--verde);
+    color: var(--branco);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: var(--verde-medio);
+    opacity: 0.4;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: var(--verde-medio);
+    opacity: 0.3;
+  }
+
+  .hero .container { position: relative; z-index: 1; }
+
+  .badge-topo {
+    display: inline-block;
+    background: var(--amarelo);
+    color: var(--preto);
+    font-family: var(--fonte-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 span {
+    color: var(--amarelo);
+  }
+
+  .hero p {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .btn-hero {
+    display: inline-block;
+    background: var(--amarelo);
+    color: var(--preto);
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s, background 0.15s;
+  }
+
+  .btn-hero:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+
+  .preco-hero {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* DOR */
+  .secao-dor {
+    background: var(--cinza-claro);
+    padding: 64px 0;
+  }
+
+  .secao-label {
+    font-family: var(--fonte-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 12px;
+  }
+
+  .secao-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+
+  .dor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .dor-item {
+    background: var(--branco);
+    border: 1px solid #e0e0dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--cinza);
+    line-height: 1.5;
+  }
+
+  .dor-item::before {
+    content: '✗';
+    color: #c0392b;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* SOLUÇÃO */
+  .secao-solucao { padding: 72px 0; }
+
+  .tag-solucao {
+    display: inline-block;
+    background: var(--verde-bg);
+    color: var(--verde-medio);
+    font-family: var(--fonte-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .modulos { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+
+  .modulo {
+    border: 1px solid #e8e8e4;
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .modulo:hover { border-color: var(--verde-claro); box-shadow: 0 2px 12px rgba(42,110,42,0.08); }
+
+  .modulo-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--verde-bg);
+    color: var(--verde-medio);
+    font-family: var(--fonte-titulo);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .modulo-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--preto);
+  }
+
+  .modulo-desc { font-size: 13px; color: var(--cinza-medio); line-height: 1.6; }
+
+  /* CHECKS */
+  .secao-checks {
+    background: var(--verde);
+    color: var(--branco);
+    padding: 64px 0;
+  }
+
+  .checks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+
+  .check-item::before {
+    content: '✓';
+    color: var(--amarelo);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* OFERTA */
+  .secao-oferta { padding: 72px 0; }
+
+  .caixa-oferta {
+    background: var(--cinza-claro);
+    border: 2px solid var(--verde-suave);
+    border-radius: 16px;
+    padding: 40px 36px;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .oferta-label {
+    font-family: var(--fonte-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 16px;
+  }
+
+  .preco-de {
+    font-size: 14px;
+    color: var(--cinza-medio);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .preco {
+    font-family: var(--fonte-titulo);
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--verde);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .preco-sub {
+    font-size: 13px;
+    color: var(--cinza-medio);
+    margin-bottom: 28px;
+  }
+
+  .btn-comprar {
+    display: block;
+    width: 100%;
+    background: var(--verde);
+    color: var(--branco);
+    font-family: var(--fonte-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.15s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+
+  .btn-comprar:hover { background: var(--verde-medio); transform: translateY(-2px); }
+
+  .seguranca {
+    font-size: 12px;
+    color: var(--cinza-medio);
+  }
+
+  /* GARANTIA */
+  .garantia-box {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--verde-bg);
+    border: 1px solid var(--verde-suave);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 24px;
+    text-align: left;
+  }
+
+  .garantia-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .garantia-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--verde);
+    margin-bottom: 6px;
+  }
+
+  .garantia-texto {
+    font-size: 13px;
+    color: var(--cinza);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--cinza-escuro);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e8e4;
+    margin: 0;
+  }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero .container > * {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+  .hero .container > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero .container > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero .container > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero .container > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero .container > *:nth-child(5) { animation-delay: 0.65s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge-topo">Acesso imediato — apenas R$27</div>
+    <h1>Vai fazer o ENEM pela primeira vez e <span>não sabe por onde começar?</span></h1>
+    <p>O Guia do Zero pro ENEM te mostra exatamente o que estudar, em que ordem e como não desperdiçar tempo com o que não cai na prova.</p>
+    <a href="#oferta" class="btn-hero">Quero o guia agora →</a>
+    <p class="preco-hero">Pagamento único • Acesso imediato • Garantia de 7 dias</p>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="secao-dor">
+  <div class="container">
+    <div class="secao-label">Isso te parece familiar?</div>
+    <h2 class="secao-titulo">A maioria dos candidatos erra<br>antes mesmo de começar</h2>
+    <div class="dor-grid">
+      <div class="dor-item">Não sabe quais matérias priorizar</div>
+      <div class="dor-item">Tem medo de estudar muito e não passar</div>
+      <div class="dor-item">Não entende como o ENEM funciona de verdade</div>
+      <div class="dor-item">Sente que está atrasado e perdendo tempo</div>
+      <div class="dor-item">Não sabe como escrever uma boa redação</div>
+      <div class="dor-item">Estuda sem método e sem direção</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SOLUÇÃO -->
+<section class="secao-solucao">
+  <div class="container">
+    <div class="tag-solucao">O que você vai aprender</div>
+    <h2 class="secao-titulo">Tudo que você precisa saber<br>para começar do jeito certo</h2>
+    <div class="modulos">
+      <div class="modulo">
+        <div class="modulo-num">01</div>
+        <div>
+          <div class="modulo-titulo">Como o ENEM funciona</div>
+          <div class="modulo-desc">Estrutura da prova, áreas de conhecimento e como a nota é calculada. Sem mistério.</div>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">02</div>
+        <div>
+          <div class="modulo-titulo">Quais matérias têm mais peso</div>
+          <div class="modulo-desc">Os conteúdos que mais caem e que você precisa dominar antes de qualquer outra coisa.</div>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">03</div>
+        <div>
+          <div class="modulo-titulo">Como montar seu plano de estudos</div>
+          <div class="modulo-desc">Um método simples para organizar sua rotina sem precisar estudar 8 horas por dia.</div>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">04</div>
+        <div>
+          <div class="modulo-titulo">Como escrever a redação nota 1000</div>
+          <div class="modulo-desc">Os critérios de avaliação e os erros que derrubam a nota de todo mundo.</div>
+        </div>
+      </div>
+      <div class="modulo">
+        <div class="modulo-num">05</div>
+        <div>
+          <div class="modulo-titulo">Como usar as provas anteriores a seu favor</div>
+          <div class="modulo-desc">A estratégia de praticar com simulados que realmente prepara para o dia da prova.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKS -->
+<section class="secao-checks">
+  <div class="container">
+    <div class="secao-label" style="color: var(--amarelo);">Com esse guia você vai conseguir</div>
+    <h2 class="secao-titulo" style="color: var(--branco);">Sair do zero com um caminho claro</h2>
+    <div class="checks-grid">
+      <div class="check-item">Saber exatamente o que estudar sem perder tempo</div>
+      <div class="check-item">Ter um plano de estudos claro do zero</div>
+      <div class="check-item">Entrar na prova com confiança e sem desespero</div>
+      <div class="check-item">Aumentar sua chance de aprovação sem curso caro</div>
+      <div class="check-item">Entender a redação e parar de ter medo dela</div>
+      <div class="check-item">Estudar com método, não com esforço exagerado</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="secao-oferta" id="oferta">
+  <div class="container">
+    <div class="caixa-oferta">
+      <div class="oferta-label">Oferta especial de lançamento</div>
+      <div class="preco-de">De R$97</div>
+      <div class="preco">R$27</div>
+      <div class="preco-sub">pagamento único — acesso imediato ao PDF</div>
+      <a href="SEU_LINK_KIWIFY_AQUI" class="btn-comprar">Quero o guia agora →</a>
+      <div class="seguranca">Pix, cartão ou boleto • Compra 100% segura</div>
+      <div class="garantia-box">
+        <div class="garantia-icon">🛡️</div>
+        <div>
+          <div class="garantia-titulo">Garantia de 7 dias</div>
+          <div class="garantia-texto">Se você não gostar por qualquer motivo, devolvemos seu dinheiro. Sem perguntas, sem burocracia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Guia do Zero pro ENEM. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
