@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra confirmada — Guia do Zero pro ENEM</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #1a4a1a;
+    --verde-medio: #2d6a2d;
+    --verde-claro: #4a9e4a;
+    --verde-bg: #f0f7f0;
+    --verde-suave: #e0efe0;
+    --amarelo: #f5c842;
+    --amarelo-escuro: #d4a800;
+    --preto: #0d0d0d;
+    --cinza: #444;
+    --cinza-medio: #777;
+    --cinza-claro: #f5f5f2;
+    --branco: #ffffff;
+    --fonte-titulo: 'Syne', sans-serif;
+    --fonte-corpo: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--fonte-corpo);
+    color: var(--preto);
+    background: var(--branco);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+  /* TOPO CONFIRMACAO */
+  .topo {
+    background: var(--verde);
+    padding: 48px 0 40px;
+    text-align: center;
+  }
+
+  .check-circle {
+    width: 64px; height: 64px;
+    background: var(--amarelo);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .topo h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 800;
+    color: var(--branco);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .topo p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 440px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+
+  .btn-acesso {
+    display: inline-block;
+    background: var(--amarelo);
+    color: var(--preto);
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .btn-acesso:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+
+  /* PROXIMOS PASSOS */
+  .passos { padding: 48px 0; background: var(--cinza-claro); }
+  .passos h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+
+  .passo {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    background: var(--branco);
+    border: 1px solid #e8e8e4;
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+
+  .passo-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--verde-bg);
+    color: var(--verde-medio);
+    font-family: var(--fonte-titulo);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .passo-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--preto);
+  }
+
+  .passo-desc { font-size: 13px; color: var(--cinza-medio); line-height: 1.5; }
+
+  /* UPSELL */
+  .upsell { padding: 56px 0; }
+
+  .upsell-label {
+    display: inline-block;
+    background: #FFF3CD;
+    color: #856404;
+    font-family: var(--fonte-titulo);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .upsell h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 800;
+    color: var(--preto);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .upsell-sub {
+    font-size: 15px;
+    color: var(--cinza);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .kit-itens { margin-bottom: 28px; }
+
+  .kit-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: var(--branco);
+  }
+
+  .kit-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .kit-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--preto);
+    margin-bottom: 2px;
+  }
+
+  .kit-desc { font-size: 13px; color: var(--cinza-medio); line-height: 1.5; }
+
+  .caixa-upsell {
+    background: var(--verde);
+    border-radius: 14px;
+    padding: 32px 28px;
+    text-align: center;
+    color: var(--branco);
+  }
+
+  .upsell-timer {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+  }
+
+  .timer {
+    font-family: var(--fonte-titulo);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--amarelo);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .upsell-preco-de {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .upsell-preco {
+    font-family: var(--fonte-titulo);
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--branco);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .upsell-preco-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 24px;
+  }
+
+  .btn-upsell {
+    display: block;
+    width: 100%;
+    background: var(--amarelo);
+    color: var(--preto);
+    font-family: var(--fonte-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.15s, transform 0.15s;
+    margin-bottom: 12px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-upsell:hover { background: var(--amarelo-escuro); transform: translateY(-2px); }
+
+  .btn-recusar {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+  }
+  .btn-recusar:hover { color: rgba(255,255,255,0.7); }
+
+  /* COMPARTILHAR */
+  .compartilhar {
+    padding: 48px 0;
+    background: var(--cinza-claro);
+    text-align: center;
+  }
+
+  .compartilhar h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .compartilhar p {
+    font-size: 14px;
+    color: var(--cinza-medio);
+    margin-bottom: 20px;
+  }
+
+  .share-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+  .share-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: var(--fonte-titulo);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .share-btn:hover { opacity: 0.85; }
+  .share-whatsapp { background: #25D366; color: white; }
+  .share-instagram { background: #E1306C; color: white; }
+
+  footer {
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- CONFIRMACAO -->
+<section class="topo">
+  <div class="container">
+    <div class="check-circle">✓</div>
+    <h1>Compra confirmada!</h1>
+    <p>Seu acesso ao Guia do Zero pro ENEM foi liberado. Voce vai receber o link no email cadastrado em instantes.</p>
+    <a href="SEU_LINK_ENTREGA_AQUI" class="btn-acesso">Acessar o guia agora →</a>
+  </div>
+</section>
+
+<!-- PROXIMOS PASSOS -->
+<section class="passos">
+  <div class="container">
+    <h2>Seus proximos passos</h2>
+    <div class="passo">
+      <div class="passo-num">1</div>
+      <div>
+        <div class="passo-titulo">Acesse o guia no link acima</div>
+        <div class="passo-desc">O PDF ja esta disponivel. Salve no seu celular ou computador para ter acesso offline.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">2</div>
+      <div>
+        <div class="passo-titulo">Leia a introducao e o capitulo 3</div>
+        <div class="passo-desc">O plano de estudos do capitulo 3 e o primeiro passo pratico. Monte o seu hoje mesmo.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">3</div>
+      <div>
+        <div class="passo-titulo">Comece a estudar amanha</div>
+        <div class="passo-desc">Nao espere a semana perfeita. O melhor momento para comecar e agora.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="upsell">
+  <div class="container">
+    <div class="upsell-label">⚡ Oferta exclusiva — so aparece aqui</div>
+    <h2>Quer turbinar sua preparacao com o Kit Completo?</h2>
+    <p class="upsell-sub">Alem do guia, voce pode ter acesso ao plano de estudos de 90 dias, ao modelo de redacao nota 1000 comentado e aos mapas mentais das principais materias — tudo num unico kit.</p>
+
+    <div class="kit-itens">
+      <div class="kit-item">
+        <div class="kit-icon">📅</div>
+        <div>
+          <div class="kit-titulo">Plano de Estudos de 90 dias</div>
+          <div class="kit-desc">Cronograma dia a dia com o que estudar em cada semana ate o dia da prova.</div>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-icon">✍️</div>
+        <div>
+          <div class="kit-titulo">Modelo de Redacao Nota 1000 Comentado</div>
+          <div class="kit-desc">Analise completa de uma redacao nota 1000 com comentarios em cada paragrafo e checklist para a prova.</div>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-icon">🗺️</div>
+        <div>
+          <div class="kit-titulo">Mapas Mentais das Principais Materias</div>
+          <div class="kit-desc">Resumo visual dos temas mais cobrados no ENEM para revisar rapido antes da prova.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caixa-upsell">
+      <div class="upsell-timer">Oferta disponivel por:</div>
+      <div class="timer" id="timer">10:00</div>
+      <div class="upsell-preco-de">De R$97</div>
+      <div class="upsell-preco">R$47</div>
+      <div class="upsell-preco-sub">pagamento unico — acesso imediato</div>
+      <a href="SEU_LINK_UPSELL_KIWIFY_AQUI" class="btn-upsell">Quero o Kit Completo agora →</a>
+      <a href="#" class="btn-recusar" onclick="document.querySelector('.upsell').style.display='none'; return false;">Nao, obrigado. Quero continuar sem o kit.</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARTILHAR -->
+<section class="compartilhar">
+  <div class="container">
+    <h2>Conta para um amigo</h2>
+    <p>Conhece alguem que tambem vai fazer o ENEM? Compartilha o guia.</p>
+    <div class="share-btns">
+      <a href="https://wa.me/?text=Acabei%20de%20comprar%20o%20Guia%20do%20Zero%20pro%20ENEM%20e%20ta%20incrivel!%20Confere%20aqui%3A%20SEU_LINK_AQUI" target="_blank" class="share-btn share-whatsapp">Compartilhar no WhatsApp</a>
+      <a href="https://www.instagram.com/" target="_blank" class="share-btn share-instagram">Compartilhar no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Guia do Zero pro ENEM. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  // Timer de 10 minutos
+  let total = 10 * 60;
+  const timerEl = document.getElementById('timer');
+
+  const tick = () => {
+    if (total <= 0) {
+      timerEl.textContent = '00:00';
+      return;
+    }
+    total--;
+    const m = String(Math.floor(total / 60)).padStart(2, '0');
+    const s = String(total % 60).padStart(2, '0');
+    timerEl.textContent = `${m}:${s}`;
+    setTimeout(tick, 1000);
+  };
+  tick();
+</script>
+
+</body>
+</html>
